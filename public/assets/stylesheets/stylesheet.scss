@@ -1,0 +1,80 @@
+$font-size: 14pt;
+$site-bgcolor: #400000;
+$page-bgcolor: white;
+
+*, html {
+    font-family: sans-serif;
+}
+
+html, body {
+    background-color: $site-bgcolor;
+    font-size: $font-size;
+    margin: 0px;
+    padding: 0px;
+}
+
+div.page {
+    background-color: $page-bgcolor;
+    width: 800px;
+    margin: auto;
+    padding-top: 1px;
+    min-height: 100vh;
+    box-shadow: 3px 3px 15px 0px rgba(0,0,0,0.75);
+}
+
+header {
+    text-align: center;
+}
+
+main {
+    padding: 5px;
+
+    form.login {
+        width: 320px;
+        margin: auto;
+
+
+        label {
+            display: inline-block;
+            width: 100px;
+        }
+
+        input {
+            margin-top: 10px;
+            width: 200px;
+            font-size: $font-size;
+        }
+
+        button {
+            margin-top: 10px;
+            width: 100%;
+            height: 2em;
+            font-size: $font-size;
+        }
+    }
+}
+
+table.album  {
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin: auto;
+
+
+    td {
+        padding: 3px;
+    }
+
+    tr:nth-child(2n) {
+        background-color: #EEEEEE;
+    }
+
+    thead {
+        background-color: #DDDDDD;
+        border-bottom: 1px solid black;
+    }
+
+    tfoot {
+        background-color: #DDDDDD;
+        border-top: 1px solid black;
+    }
+}
