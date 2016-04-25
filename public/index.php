@@ -1,4 +1,5 @@
 <?php
+header("Content-Type: text/html; charset=windows-1252");
 
 require_once '../config.php';
 
