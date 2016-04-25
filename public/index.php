@@ -1,5 +1,6 @@
 <?php
 header("Content-Type: text/html; charset=windows-1252");
+ini_set('default_charset', 'cp1252');
 
 require_once '../config.php';
 
@@ -20,6 +21,13 @@ if (isset($_REQUEST['new_user'])) {
     }
 }
 
+// handle album creation
+if (isset($_REQUEST['new_album'])) {
+    if(!Album::add_album($_REQUEST['new_album'], $_REQUEST['year'], $_REQUEST['interpret'])) {
+        $template_data['message'] = 'Album creation failed!';
+    }
+}
+
 if (isset($_REQUEST['logout'])) {
     Session::logout();
 }
@@ -35,9 +43,5 @@ if (Session::authenticated()) {
 
 TODO:
 
-* store enrycpted versions of password
-
-* read and display albums from database
-* add an ORM-class for albums
 * create input mask for adding an album to the database
 */

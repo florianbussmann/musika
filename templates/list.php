@@ -25,27 +25,22 @@ http://php.net/manual/de/control-structures.alternative-syntax.php
     </thead>
 
     <tbody>
-        <tr>
-            <td>#17</td>
-            <td>Green Day</td>
-            <td>Dookie</td>
-            <td>1994</td>
-            <td>Punkrock, Pop-Punk, Alternative Rock</td>
-        </tr>
-        <tr>
-            <td>#19</td>
-            <td>Green Day</td>
-            <td>Dookie</td>
-            <td>1994</td>
-            <td>Punkrock, Pop-Punk, Alternative Rock</td>
-        </tr>
-        <tr>
-            <td>#27</td>
-            <td>Green Day</td>
-            <td>Dookie</td>
-            <td>1994</td>
-            <td>Punkrock, Pop-Punk, Alternative Rock</td>
-        </tr>
+        <?php
+        global $dbh;
+        
+        $arr = Album::getAlbums();
+        foreach ($arr as $key => $value) {
+            ?>
+            <tr>
+                <td><?=htmlspecialchars($value->getPlatzierung());?></td>
+                <td><?=htmlspecialchars($value->getInterpret());?></td>
+                <td><?=htmlspecialchars($value->getName());?></td>
+                <td><?=htmlspecialchars($value->getYear());?></td>
+                <td><?=htmlspecialchars($value->getGenre());?></td>
+            </tr>
+            <?php
+        }
+        ?>
     </tbody>
 
     <tfoot>
@@ -54,6 +49,25 @@ http://php.net/manual/de/control-structures.alternative-syntax.php
         </tr>
     </tfoot>
 </table>
+
+<form action="index.php" method="post" class="login">
+   <label for="new_album">
+       Album:
+   </label>
+   <input id="new_album" type="text" name="new_album" placeholder="Albumtitel">
+
+   <label for="year">
+       Year:
+   </label>
+   <input id="year" type="text" name="year" placeholder="Year">
+   
+   <label for="interpret">
+       Interpret:
+   </label>
+   <input id="interpret" type="text" name="interpret" placeholder="Interpret">
+
+   <button>Add Album</button>
+</form>
 
 <form action="index.php" method="post" class="login">
    <label for="new_user">
