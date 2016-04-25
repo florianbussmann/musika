@@ -54,3 +54,17 @@ http://php.net/manual/de/control-structures.alternative-syntax.php
         </tr>
     </tfoot>
 </table>
+
+<form action="index.php" method="post" class="login">
+   <label for="new_user">
+       Login:
+   </label>
+   <input id="new_user" type="text" name="new_user" placeholder="test@example.com">
+
+   <label for="password">
+       Passwort:
+   </label>
+   <input id="password" type="password" name="password" placeholder="Passwort">
+
+   <button>New User</button>
+</form>

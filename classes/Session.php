@@ -1,6 +1,18 @@
 <?php
 
 class Session {
+    public static function add_user($user, $password)
+    {
+        global $dbh;
+        
+        $stmt = $dbh->prepare("INSERT INTO user (username, password) VALUES (:user, :password)");
+        
+        return $stmt->execute(array(
+            'user'     => $user,
+            'password' => $password
+        ));
+    }
+    
     public static function check_credentials($user, $password)
     {
         global $dbh;
