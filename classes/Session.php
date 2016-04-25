@@ -9,7 +9,7 @@ class Session {
         
         return $stmt->execute(array(
             'user'     => $user,
-            'password' => $password
+            'password' => password_hash($password, PASSWORD_DEFAULT)
         ));
     }
     
@@ -17,15 +17,14 @@ class Session {
     {
         global $dbh;
 
-        $stmt = $dbh->prepare("SELECT COUNT(*) FROM user
-            WHERE username = :user AND password = :password");
+        $stmt = $dbh->prepare("SELECT password FROM user WHERE username = :user");
 
         $stmt->execute(array(
-            'user'     => $user,
-            'password' => $password
+            'user' => $user
         ));
-
-        if ($stmt->fetchColumn() == 1) {
+        
+        $result = $stmt->fetch();
+        if (password_verify($password, $result['password'])) {
             $_SESSION['logged_in'] = true;
             
             // create new session_id
