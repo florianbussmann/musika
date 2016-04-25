@@ -15,6 +15,10 @@ class Session {
 
         if ($stmt->fetchColumn() == 1) {
             $_SESSION['logged_in'] = true;
+            
+            // create new session_id
+            session_regenerate_id(true);
+            
             return true;
         }
 
@@ -33,5 +37,8 @@ class Session {
 
         // immediately start a new one
         session_start();
+        
+        // create new session_id
+        session_regenerate_id(true);
     }
 }
